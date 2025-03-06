@@ -1,5 +1,6 @@
 <?php
-
+class UserAccountAPIcest
+{
 public function testGetUserById(AcceptanceTester $I)
     {
         $userId = $I->recallUserId();
@@ -11,3 +12,4 @@ public function testGetUserById(AcceptanceTester $I)
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['id' => $userId]);
     }
+}

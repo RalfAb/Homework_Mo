@@ -1,4 +1,6 @@
 <?php
+class InvalidUser
+{
  public function testCreateUserInvalidInput(AcceptanceTester $I)
  {
      $userData = [
@@ -22,3 +24,4 @@
      $I->seeResponseIsJson();
      $I->seeResponseContainsJson(['title' => 'Invalid Input']);
  }
+}

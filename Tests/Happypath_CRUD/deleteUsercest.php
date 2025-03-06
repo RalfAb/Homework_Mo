@@ -1,4 +1,6 @@
 <?php
+class deleteuserCest
+{
 public function testDeleteUserById(AcceptanceTester $I)
 {
     $userId = $I->recallUserId();
@@ -6,4 +8,5 @@ public function testDeleteUserById(AcceptanceTester $I)
     $I->sendDELETE($this->baseUrl . '/users/' . $userId);
 
     $I->seeResponseCodeIs(204);
+}
 }

@@ -1,4 +1,6 @@
 <?php
+class findnonexistenuserCest
+{
   public function testGetUserByIdNotFound(AcceptanceTester $I)
   {
       $nonExistentUserId = 'nonexistent-user-id';
@@ -10,3 +12,4 @@
       $I->seeResponseIsJson();
       $I->seeResponseContainsJson(['title' => 'User not found']);
   }
+}

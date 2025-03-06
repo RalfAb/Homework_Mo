@@ -1,0 +1,17 @@
+suites:
+  api:
+    actor: ApiTester
+    path: .
+    modules:
+      enabled:
+        - REST:
+            url: http://127.0.0.1
+            depends: PhpBrowser
+        - Asserts
+        - Helper\Api
+env:
+  local:
+    modules:
+      config:
+        REST:
+          url: http://127.0.0.1

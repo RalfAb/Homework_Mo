@@ -1,5 +1,6 @@
 <?php
-
+class DeletenonexistentUserCest
+{
 public function testDeleteUserByIdNotFound(AcceptanceTester $I)
 {
     $nonExistentUserId = 'nonexistent-user-id';
@@ -10,4 +11,5 @@ public function testDeleteUserByIdNotFound(AcceptanceTester $I)
     $I->seeResponseCodeIs(404);
     $I->seeResponseIsJson();
     $I->seeResponseContainsJson(['title' => 'User not found']);
+}
 }

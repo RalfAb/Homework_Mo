@@ -1,7 +1,9 @@
 <?php
- public function testUpdateUserByIdNotFound(AcceptanceTester $I)
+class UpdateUserCest
+{
+ public function testUpdateUserById(AcceptanceTester $I)
  {
-     $nonExistentUserId = 'nonexistent-user-id';
+     $userId = $I->recallUserId();
      $updatedUserData = [
          'firstName' => 'Updated',
          'lastName' => 'User',
@@ -15,11 +17,12 @@
      ];
 
      $I->haveHttpHeader('Content-Type', 'application/json');
-     $I->haveHttpHeader('Accept', 'application/problem+json');
+     $I->haveHttpHeader('Accept', 'application/json');
      $I->haveHttpHeader('Authorization', $this->authHeader['Authorization']);
-     $I->sendPUT($this->baseUrl . '/users/' . $nonExistentUserId, $updatedUserData);
+     $I->sendPUT($this->baseUrl . '/users/' . $userId, $updatedUserData);
 
-     $I->seeResponseCodeIs(404);
+     $I->seeResponseCodeIs(200);
      $I->seeResponseIsJson();
-     $I->seeResponseContainsJson(['title' => 'User not found']);
+     $I->seeResponseContainsJson($updatedUserData);
  }
+}
